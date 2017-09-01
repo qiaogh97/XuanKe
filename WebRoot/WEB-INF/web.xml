@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="3.0"
+    xmlns="http://java.sun.com/xml/ns/javaee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
+  <servlet>
+    <servlet-name>TeacherPublishLabel1Servlet</servlet-name>
+    <servlet-class>com.servlet.TeacherPublishLabel1Servlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>TeacherPublishLabel2Servlet</servlet-name>
+    <servlet-class>com.servlet.TeacherPublishLabel2Servlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>TeacherStudentManageServlet</servlet-name>
+    <servlet-class>com.servlet.TeacherStudentManageServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>TeacherStudentManage2Servlet</servlet-name>
+    <servlet-class>com.servlet.TeacherStudentManage2Servlet</servlet-class>
+  </servlet>
+
+
+
+  <servlet-mapping>
+    <servlet-name>TeacherPublishLabel1Servlet</servlet-name>
+    <url-pattern>/TeacherPublishLabel1Servlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>TeacherPublishLabel2Servlet</servlet-name>
+    <url-pattern>/TeacherPublishLabel2Servlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>TeacherStudentManageServlet</servlet-name>
+    <url-pattern>/TeacherStudentManageServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>TeacherStudentManage2Servlet</servlet-name>
+    <url-pattern>/TeacherStudentManage2Servlet</url-pattern>
+  </servlet-mapping>
+
+</web-app>
