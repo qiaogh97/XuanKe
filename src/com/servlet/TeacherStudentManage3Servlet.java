@@ -16,21 +16,28 @@ import com.entity.Label;
 public class TeacherStudentManage3Servlet extends HttpServlet {
 	public void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
-		resp.setContentType("text/html");
-		req.setCharacterEncoding("utf-8");
+		resp.setContentType("text/html");  
+        resp.setCharacterEncoding("utf-8");
         req.setCharacterEncoding("utf-8");
         PrintWriter out = resp.getWriter();
+        
+        
+        
         //type是类型，1代表录取，2代表拒绝
         String type = req.getParameter("type");
         //object1代表stu_lab.getLabelnum()
         //object1代表stu_lab.getStudentnumString()
         String labelnum = req.getParameter("object1");
+        int labelnumber = Integer.parseInt(labelnum);
         String studentnum = req.getParameter("object2");
         if("1".equals(type)){ // 表示录取
         	//将人数加1
         	LabelDao labelDao = new LabelDao();
-        	ArrayList<Label> selectLabel = labelDao.selectLabel(null, labelnum);
-        	Label label = selectLabel.get(0);
+        	ArrayList<Label> selectLabel = labelDao.selectLabel(null, labelnumber);
+        	Label label = new Label();
+        	for(int i=0;i<selectLabel.size();i++){
+        		label = selectLabel.get(i);
+        	}
         	int maxnum = label.getMaxnum();
         	int nownum = label.getNownum();
         	if(nownum>=maxnum){

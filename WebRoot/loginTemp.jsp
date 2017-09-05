@@ -39,6 +39,12 @@
    	String tel = request.getParameter("tel");
    	String major = request.getParameter("major");
    	String password = request.getParameter("password");
+   	
+   	String regex = "^((13[0-9])|(14[5|7])|(15([0-3]|[5-9]))|(18[0,5-9]))\\d{8}$"; 
+   	boolean flag2 = tel.matches(regex);
+   	if(!flag2){
+   		out.print("<script>alert('电话号码格式不对！');window.location.href='login.jsp'</script>");
+   	}else{
    	session.setAttribute("number",number);
 	if("1".equals(person)){//学生
 		StudentDao studentDao = new StudentDao();
@@ -58,6 +64,9 @@
 			out.print("<script>alert('注册失败!');window.location.href='login.jsp'</script>");
 		}
 	}
+   		
+   	}
+   	
    	%>
 </body>
 </html>

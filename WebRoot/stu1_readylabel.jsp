@@ -2,6 +2,7 @@
 <%@ page import="java.util.Date"%>
 <%@ page import="java.util.ArrayList"%>
 <%@ page import="java.sql.*"%>
+<%@ page import="com.entity.*"%>
 <%
 	response.setContentType("text/html;charset=utf-8");
 	request.setCharacterEncoding("utf-8");
@@ -33,7 +34,7 @@ p.leftmargin {
 <!--头部-->
 <div class="header">
 	<div class="space_hx">&nbsp;</div>
-	<div class="head_td">开放实验选课系统</div>
+	<div class="head_td"><a href="index.jsp">开放实验选课系统</a></div>
 	<div class="space_hx">&nbsp;</div>
 	<div class="nav_m">
 		<div class="n_icon">&nbsp;</div>
@@ -66,6 +67,49 @@ p.leftmargin {
 	<div class="scd_r">
 		<div class="title">
 			<span>查询</span>
+			<form id="search" name="search" method ="post" action = "StudentSelectLabelServlet">  
+        		教师编号:<input type="text" name="teachernum"/> <br/> 
+        		课程编号:<input type="text" name="labelnum"/> <br/> 
+        		<input type="submit" name="sl" value="查询符合条件的课程"/>
+			</form>
+			<div align = "center">
+		<table border="1" cellspacing="0" cellpadding="0" ">
+            <tr bgcolor="ff9900" style="font-weight:bold;">
+                <td align="center" width="80px">编号</td>
+                <td align="center" width="80px">名称</td>
+                <td align="center" width="80px">学期</td>
+                <td align="center" width="120px">教师名称</td>
+                <td align="center" width="120px">上课地点</td>
+                <td align="center" width="120px">招生人数</td>
+                <td align="center" width="120px">当前人数</td>
+                <td align="center" width="120px">内容简介</td>
+                <td align="center" width="80px">学时</td>
+                <td align="center" width="80px">学分</td>
+                <td align="center" width="120px">上课时间</td>
+            </tr>
+            <%
+    		ArrayList<Label> selectLabelList = (ArrayList<Label>)request.getAttribute("selectLabelList");
+            if(selectLabelList!= null && selectLabelList.size() > 0){
+            	for (int i = 0; i < selectLabelList.size(); i++) {
+            		Label label = selectLabelList.get(i);
+					out.print("<tr>");
+		            out.print("<td >"+label.getNumber()+"</td>");
+		            out.print("<td >"+label.getNameString()+"</td>");
+		            out.print("<td >"+label.getTermString()+"</td>");
+		            out.print("<td >"+label.getTeachernameString()+"</td>");
+		            out.print("<td >"+label.getPlaceString()+"</td>");
+		            out.print("<td >"+label.getMaxnum()+"</td>");
+		            out.print("<td >"+label.getNownum()+"</td>");
+		            out.print("<td >"+label.getContentString()+"</td>");
+		            out.print("<td >"+label.getTimeString()+"</td>");
+		            out.print("<td >"+label.getScore()+"</td>");
+		            out.print("<td >"+label.getStudytimeString()+"</td>");
+		            out.print("</tr>");
+				}
+            }
+    		%>
+        </table>
+		</div>
 		</div>
 	</div>
 </div>

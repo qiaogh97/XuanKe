@@ -37,12 +37,12 @@ public class StudentDao {
 			rs = result.getRs();
 			while (rs.next()) {
 				Student student = new Student();
-				student.setMajorString(rs.getString("number"));
+				student.setNumberString(rs.getString("number"));
 				student.setNameString(rs.getString("name"));
-				student.setNumberString(rs.getString("class"));
-				student.setNumberString(rs.getString("tel"));
-				student.setPwdString(rs.getString("major"));
-				student.setTelString(rs.getString("pwd"));
+				student.setMajorString(rs.getString("major"));
+				student.setClassString(rs.getString("class"));
+				student.setTelString(rs.getString("tel"));
+				student.setPwdString(rs.getString("pwd"));
 				studentList.add(student);
 			}
 			result.close();

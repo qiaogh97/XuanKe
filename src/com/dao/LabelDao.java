@@ -47,18 +47,18 @@ public class LabelDao {
 		return 0;
 	}
 
-	public ArrayList<Label> selectLabel(String teachernum, String labelnum) {
+	public ArrayList<Label> selectLabel(String teachernum, int labelnum) {
 		ResultSet rs = null;
 		ArrayList<Label> labelList = new ArrayList<Label>();
 		try {
 			sql result = new sql();
-			String temp;
-			if (teachernum == null && labelnum == null) {
+			String temp = "";
+			if (teachernum == null && labelnum == -1) {
 				temp = "SELECT * FROM label";
 			} else if (teachernum != null) {
 				temp = "SELECT * FROM label where teachernum=" + teachernum;
 			} else {
-				temp = "SELECT * FROM label where labelnum=" + labelnum;
+				temp = "SELECT * FROM label where number=" + labelnum;
 			}
 			result.setSqlStr(temp);
 			result.executeQuery();
@@ -113,15 +113,16 @@ public class LabelDao {
 		}
 		*/
 		 // 测试selectlabel方法 
-		ArrayList<Label> selectLabel = labelDao.selectLabel("10001",null); 
+		ArrayList<Label> selectLabel = labelDao.selectLabel(null,1102); 
 		 for(int i = 0;i<selectLabel.size();i++){ Label label = selectLabel.get(i);
-		 System.out.println(label.getContentString());
-		 System.out.println(label.getMaxnum()+"");
+		 	System.out.println(label.getContentString());
+		 	System.out.println(label.getMaxnum()+"");
 		 }
 		/*
 		 * // 测试updateLabelNowtime方法 int flag =
 		 * labelDao.updateLabelNowtime(1102, 25); if (flag==1) {
 		 * System.out.println("更新成功"); }else { System.out.println("更新失败"); }
 		 */
+		 
 	}
 }

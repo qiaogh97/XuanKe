@@ -19,6 +19,47 @@
     <servlet-name>TeacherStudentManage2Servlet</servlet-name>
     <servlet-class>com.servlet.TeacherStudentManage2Servlet</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>TeacherStudentManage3Servlet</servlet-name>
+    <servlet-class>com.servlet.TeacherStudentManage3Servlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>TeacherInputGradeServlet</servlet-name>
+    <servlet-class>com.servlet.TeacherInputGradeServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>TeacherInputGrade2Servlet</servlet-name>
+    <servlet-class>com.servlet.TeacherInputGrade2Servlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>TeacherInputGrade3Servlet</servlet-name>
+    <servlet-class>com.servlet.TeacherInputGrade3Servlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>TeacherSearchGradeServlet</servlet-name>
+    <servlet-class>com.servlet.TeacherSearchGradeServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>StudentInfoUpdateServlet</servlet-name>
+    <servlet-class>com.servlet.StudentInfoUpdateServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>TeacherInfoUpdateServlet</servlet-name>
+    <servlet-class>com.servlet.TeacherInfoUpdateServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>StudentSelectLabelServlet</servlet-name>
+    <servlet-class>com.servlet.StudentSelectLabelServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>StudentInsertLabelServlet</servlet-name>
+    <servlet-class>com.servlet.StudentInsertLabelServlet</servlet-class>
+  </servlet>
+
+
+
+
+
 
 
 
@@ -37,6 +78,42 @@
   <servlet-mapping>
     <servlet-name>TeacherStudentManage2Servlet</servlet-name>
     <url-pattern>/TeacherStudentManage2Servlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>TeacherStudentManage3Servlet</servlet-name>
+    <url-pattern>/TeacherStudentManage3Servlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>TeacherInputGradeServlet</servlet-name>
+    <url-pattern>/TeacherInputGradeServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>TeacherInputGrade2Servlet</servlet-name>
+    <url-pattern>/TeacherInputGrade2Servlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>TeacherInputGrade3Servlet</servlet-name>
+    <url-pattern>/TeacherInputGrade3Servlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>TeacherSearchGradeServlet</servlet-name>
+    <url-pattern>/TeacherSearchGradeServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>StudentInfoUpdateServlet</servlet-name>
+    <url-pattern>/StudentInfoUpdateServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>TeacherInfoUpdateServlet</servlet-name>
+    <url-pattern>/TeacherInfoUpdateServlet</url-pattern>
+  </servlet-mapping>
+    <servlet-mapping>
+    <servlet-name>StudentInsertLabelServlet</servlet-name>
+    <url-pattern>/StudentInsertLabelServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>StudentSelectLabelServlet</servlet-name>
+    <url-pattern>/StudentSelectLabelServlet</url-pattern>
   </servlet-mapping>
 
 </web-app>

@@ -24,7 +24,6 @@ public class TeacherStudentManage2Servlet extends HttpServlet {
 		
 	}
 
-	@SuppressWarnings("null")
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
@@ -33,13 +32,14 @@ public class TeacherStudentManage2Servlet extends HttpServlet {
 	        resp.setCharacterEncoding("utf-8");
 	        req.setCharacterEncoding("utf-8");
 	        
+	        
 	        //取得登录状态下的老师的编号
 	        HttpSession session = req.getSession();
 	        String teachernum = (String)session.getAttribute("number");
 	        
 	        //查询该老师名下的所有课题
 	        LabelDao labelDao = new LabelDao();
-	        ArrayList<Label> selectLabelList = labelDao.selectLabel(teachernum, null);//用来存放查询课题表结果的
+	        ArrayList<Label> selectLabelList = labelDao.selectLabel(teachernum, -1);//用来存放查询课题表结果的
 	        
 	        ArrayList<Integer> listsint = new ArrayList<Integer>();//存放该老师名下的所有课题编号
 	        ArrayList<Stu_lab> stu_labList = new ArrayList<Stu_lab>();//存放最终查询出来的学生课题表

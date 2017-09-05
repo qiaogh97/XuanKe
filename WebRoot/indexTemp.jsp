@@ -33,7 +33,7 @@
 	<font size="6">
 		<p>跳转中...</p> 
 	<%
-   	String person = request.getParameter("person");
+   	String person = request.getParameter("person");//1学生2老师
    	String number = request.getParameter("number");
    	String password = request.getParameter("password");
    	session.setAttribute("number",number);

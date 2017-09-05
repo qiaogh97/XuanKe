@@ -56,6 +56,35 @@ public class Stu_LabDao {
 		}
 		return teacherList;
 	}
+//select * from stu_lab where labelnum = 1101 and grade = -1
+	public ArrayList<Stu_lab> selectStu_lab3(int labelnum,int grade){
+		ResultSet rs = null;
+		ArrayList<Stu_lab> teacherList = new ArrayList<Stu_lab>();
+		try {
+			sql result = new sql();
+			String temp = "";
+			if (grade==-1) {
+				temp = "SELECT * FROM Stu_lab where labelnum="+labelnum+" and grade = "+grade;
+			}else {
+				temp = "SELECT * FROM Stu_lab where labelnum="+labelnum+" and grade > 0 ";
+			}
+			result.setSqlStr(temp);
+			result.executeQuery();
+			rs = result.getRs();
+			while (rs.next()) {
+				Stu_lab stu_lab = new Stu_lab();
+				stu_lab.setFlag(rs.getInt("flag"));
+				stu_lab.setGrade(rs.getInt("grade"));
+				stu_lab.setLabelnum(rs.getInt("labelnum"));
+				stu_lab.setStudentnumString(rs.getString("studentnum"));
+				teacherList.add(stu_lab);
+			}
+			result.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return teacherList;
+	}
 //insert into stu_lab(studentnum,labelnum,flag) values ('1120142001', '1102', '0')
 	public int insertStu_lab(String studentnum,int labelnum,int flag){
 		try{

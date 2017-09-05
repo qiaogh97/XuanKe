@@ -1,6 +1,7 @@
 package com.servlet;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
@@ -11,18 +12,17 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.dao.LabelDao;
+import com.dao.Stu_LabDao;
 import com.entity.Label;
 
-
-public class TeacherPublishLabel2Servlet extends HttpServlet {
-
+public class StudentInsertLabelServlet extends HttpServlet {
+	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		doPost(req, resp);
-		
 	}
-
+	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
@@ -31,28 +31,32 @@ public class TeacherPublishLabel2Servlet extends HttpServlet {
 	        resp.setCharacterEncoding("utf-8");
 	        req.setCharacterEncoding("utf-8");
 	        
+	        PrintWriter out = resp.getWriter();
 	        HttpSession session = req.getSession();
-	        String teachernum = (String)session.getAttribute("number");
+	        String studentnum = (String)session.getAttribute("number");
+	        String labelnumString = req.getParameter("labelnum");
 	        
-	        LabelDao labelDao = new LabelDao();
-	        ArrayList<Label> selectLabelList = labelDao.selectLabel(teachernum, -1);
+	        if (labelnumString=="") {
+	        	out.print("<script>alert('课程编号不能为空！');window.location.href='stu2_mylabel.jsp'</script>");
+			}else {
+				int labelnum = Integer.parseInt(labelnumString);
+				
+				Stu_LabDao stu_LabelDao = new Stu_LabDao();
+				int result = stu_LabelDao.insertStu_lab(studentnum, labelnum, 0);
+				
+				if(result==1){
+					out.print("<script>alert('提交成功！');window.location.href='stu2_mylabel.jsp'</script>");
+				}	
+				else{
+					out.print("<script>alert('提交失败！');window.location.href='stu2_mylabel.jsp'</script>");
+				}  
+				         			
+				
+			}
 	        
-			req.setAttribute("selectLabelList", selectLabelList);
-			
-			RequestDispatcher rd = req.getRequestDispatcher("tea1_publishlabel2.jsp");  
-			try {  
-			    rd.forward(req, resp);  
-			         return;  
-			}catch(Exception e){
-				e.printStackTrace();
-			} 
-	        
-	        
-	        			
 	        
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
-
 }

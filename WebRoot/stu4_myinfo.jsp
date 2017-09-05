@@ -2,6 +2,8 @@
 <%@ page import="java.util.Date"%>
 <%@ page import="java.util.ArrayList"%>
 <%@ page import="java.sql.*"%>
+<%@ page import="com.entity.*"%>
+<%@ page import="com.dao.*"%>
 <%
 	response.setContentType("text/html;charset=utf-8");
 	request.setCharacterEncoding("utf-8");
@@ -33,7 +35,7 @@ p.leftmargin {
 <!--头部-->
 <div class="header">
 	<div class="space_hx">&nbsp;</div>
-	<div class="head_td">开放实验选课系统</div>
+	<div class="head_td"><a href="index.jsp">开放实验选课系统</a></div>
 	<div class="space_hx">&nbsp;</div>
 	<div class="nav_m">
 		<div class="n_icon">&nbsp;</div>
@@ -72,6 +74,48 @@ p.leftmargin {
 		<div class="title">
 			<span>查看</span>
 		</div>
+		<br>
+			<div align = "center">
+		<table border="1" cellspacing="0" cellpadding="0" ">
+            <tr bgcolor="ff9900" style="font-weight:bold;">
+                <td align="center" width="120px">学号</td>
+                <td align="center" width="120px">姓名</td>
+                <td align="center" width="150px">班级</td>
+                <td align="center" width="120px">电话</td>
+                <td align="center" width="120px">专业</td>
+                <td align="center" width="120px">密码</td>
+            </tr>
+            <%
+	        String studentnum = (String)session.getAttribute("number");
+	        
+	        StudentDao studentDao = new StudentDao();
+	        ArrayList<Student> selectStudent = studentDao.selectStudent(studentnum);
+	        Student student = selectStudent.get(0);
+			out.print("<tr>");
+            out.print("<td align=center>"+student.getNumberString()+"</td>");
+            out.print("<td align=center>"+student.getNameString()+"</td>");
+            out.print("<td align=center>"+student.getClassString()+"</td>");
+            out.print("<td align=center>"+student.getTelString()+"</td>");
+            out.print("<td align=center>"+student.getMajorString()+"</td>");
+            out.print("<td align=center>"+student.getPwdString()+"</td>");
+    		%>
+        </table>
+		</div>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 	</div>
 </div>
 

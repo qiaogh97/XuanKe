@@ -2,6 +2,8 @@
 <%@ page import="java.util.Date"%>
 <%@ page import="java.util.ArrayList"%>
 <%@ page import="java.sql.*"%>
+<%@ page import="com.entity.*"%>
+<%@ page import="com.dao.*"%>
 <%
 	response.setContentType("text/html;charset=utf-8");
 	request.setCharacterEncoding("utf-8");
@@ -33,7 +35,7 @@ p.leftmargin {
 <!--头部-->
 <div class="header">
 	<div class="space_hx">&nbsp;</div>
-	<div class="head_td">开放实验选课系统</div>
+	<div class="head_td"><a href="index.jsp">开放实验选课系统</a></div>
 	<div class="space_hx">&nbsp;</div>
 	<div class="nav_m">
 		<div class="n_icon">&nbsp;</div>
@@ -72,6 +74,50 @@ p.leftmargin {
 		<div class="title">
 			<span>查看</span>
 		</div>
+		
+		<br>
+			<div align = "center">
+		<table border="1" cellspacing="0" cellpadding="0" ">
+            <tr bgcolor="ff9900" style="font-weight:bold;">
+                <td align="center" width="120px">学号</td>
+                <td align="center" width="120px">课题编号</td>
+                <td align="center" width="150px">课题名称</td>
+                <td align="center" width="150px">状态</td>
+            </tr>
+            <%
+	        String studentnum = (String)session.getAttribute("number");
+	        
+            //学号，课题编号，课题名称，录取是否成功
+            Stu_LabDao stu_LabDao = new Stu_LabDao();
+            ArrayList<Stu_lab> stu_labs =stu_LabDao.selectStu_lab1(studentnum);
+            for(int i =0 ;i<stu_labs.size();i++){
+            	Stu_lab stu_lab = stu_labs.get(i);
+            	LabelDao labeldao = new LabelDao();
+            	Label label = labeldao.selectLabel(null, stu_lab.getLabelnum()).get(0);
+            	
+            	int flag = stu_lab.getFlag();
+				out.print("<tr>");
+	            out.print("<td align=center>"+studentnum+"</td>");
+	            out.print("<td align=center>"+stu_lab.getLabelnum()+"</td>");
+	            out.print("<td align=center>"+label.getNameString()+"</td>");
+	            if(flag==0){
+		            out.print("<td align=center>未处理</td>");
+	            }else if(flag==1){
+		            out.print("<td align=center>已录取</td>");
+	            }else{
+		            out.print("<td align=center>已拒绝</td>");
+	            }
+				out.print("</tr>");
+            }
+            
+    		%>
+        </table>
+		</div>
+		
+		
+		
+		
+		
 	</div>
 </div>
 

@@ -34,7 +34,7 @@ p.leftmargin {
 <!--头部-->
 <div class="header">
 	<div class="space_hx">&nbsp;</div>
-	<div class="head_td">开放实验选课系统</div>
+	<div class="head_td"><a href="index.jsp">开放实验选课系统</a></div>
 	<div class="space_hx">&nbsp;</div>
 	<div class="nav_m">
 		<div class="n_icon">&nbsp;</div>
@@ -72,6 +72,7 @@ p.leftmargin {
 	<div class="scd_r">
 		<div class="title">
 			<span>查询</span>
+		</div>
 			<form id="search" name="search" method ="post" action = "TeacherPublishLabel2Servlet">  
         		<input id="subdataFill"  name ="subdataFill" type="submit" value="查询已经发布的课题" />
 			</form>
@@ -114,10 +115,6 @@ p.leftmargin {
     		%>
         </table>
 		</div>
-		
-		
-		
-        </div>
 	</div>
 </div>
 

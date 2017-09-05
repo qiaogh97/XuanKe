@@ -2,7 +2,6 @@ package com.servlet;
 
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
@@ -17,7 +16,7 @@ import com.dao.Stu_LabDao;
 import com.entity.Label;
 import com.entity.Stu_lab;
 
-public class TeacherStudentManageServlet extends HttpServlet {
+public class TeacherSearchGradeServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
@@ -53,23 +52,19 @@ public class TeacherStudentManageServlet extends HttpServlet {
 	        //把学生课题表中的该老师的课题下的学生全部取出来
 	        Stu_LabDao stu_LabDao = new Stu_LabDao();
 	        for(int i=0;i<listsint.size();i++){
-	        	ArrayList<Stu_lab> selectStu_lab2 = stu_LabDao.selectStu_lab2(listsint.get(i), 1);//根据该编号依次查询数据
+	        	ArrayList<Stu_lab> selectStu_lab2 = stu_LabDao.selectStu_lab3(listsint.get(i), 1);//根据该编号依次查询成绩大于1的数据
 	        	for(int j =0 ;j<selectStu_lab2.size();j++){
 	        		stu_labList.add(selectStu_lab2.get(j));
 	        	}
 	        }
 			req.setAttribute("stu_labList", stu_labList);
-			RequestDispatcher rd = req.getRequestDispatcher("tea2_stumanage.jsp");  
+			RequestDispatcher rd = req.getRequestDispatcher("tea3_searchgrade.jsp");  
 			try {  
 			    rd.forward(req, resp);  
 			         return;  
 			}catch(Exception e){
 				e.printStackTrace();
 			} 
-	        
-	        
-	        			
-	        
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

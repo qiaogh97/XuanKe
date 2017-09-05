@@ -36,7 +36,7 @@ p.leftmargin {
 <!--头部-->
 <div class="header">
 	<div class="space_hx">&nbsp;</div>
-	<div class="head_td">开放实验选课系统</div>
+	<div class="head_td"><a href="index.jsp">开放实验选课系统</a></div>
 	<div class="space_hx">&nbsp;</div>
 	<div class="nav_m">
 		<div class="n_icon">&nbsp;</div>
@@ -99,8 +99,7 @@ p.leftmargin {
             for (int i = 0; i < stu_labList.size(); i++) {
             		Stu_lab stu_lab = stu_labList.get(i);
             		StudentDao studentDao = new StudentDao();
-            		ArrayList<Student> students = studentDao.selectStudent(stu_lab.getStudentnumString());
-            		Student student = students.get(0);
+            		Student student = studentDao.selectStudent(stu_lab.getStudentnumString()).get(0);
 					out.print("<tr>");
 		            out.print("<td >"+stu_lab.getLabelnum()+"</td>");
 		            out.print("<td >"+stu_lab.getStudentnumString()+"</td>");
@@ -119,44 +118,8 @@ p.leftmargin {
 			}
             }
     		%>
-    		
-    		
-    		
-    		
-    		
-    		
-    		
-    		
-    		
-    		
-    		
-    		
-    		
-    		
-    		
-    		
-    		
-    		
-    		
-    		
-    		
-    		
-    		
-    		
-    		
         </table>
 		</div>
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
 	</div>
 </div>
 

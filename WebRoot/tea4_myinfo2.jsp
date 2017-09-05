@@ -2,6 +2,8 @@
 <%@ page import="java.util.Date"%>
 <%@ page import="java.util.ArrayList"%>
 <%@ page import="java.sql.*"%>
+<%@ page import="com.entity.*"%>
+<%@ page import="com.dao.*"%>
 <%
 	response.setContentType("text/html;charset=utf-8");
 	request.setCharacterEncoding("utf-8");
@@ -33,7 +35,7 @@ p.leftmargin {
 <!--头部-->
 <div class="header">
 	<div class="space_hx">&nbsp;</div>
-	<div class="head_td">开放实验选课系统</div>
+	<div class="head_td"><a href="index.jsp">开放实验选课系统</a></div>
 	<div class="space_hx">&nbsp;</div>
 	<div class="nav_m">
 		<div class="n_icon">&nbsp;</div>
@@ -72,6 +74,53 @@ p.leftmargin {
 		<div class="title">
 			<span>修改</span>
 		</div>
+		
+		
+		<div class="scd_m">
+		<%
+		   String teachernum = (String)session.getAttribute("number");
+		       
+	       TeacherDao teacherDao = new TeacherDao();
+	       ArrayList<Teacher> selectteacher = teacherDao.selectTeacher(teachernum);
+	       Teacher teacher = selectteacher.get(0);
+			%>
+				<p><h3>信息修改:</h3></p><br/>
+			<%
+		%>
+		<form name="searchUser" method="post" action="TeacherInfoUpdateServlet">
+			<table width="30%" border="0" cellspacing="0" cellpadding="0">
+                  <tr>
+                    <td height="40"><span style="color:red;">*</span>教师编号：</td>
+                    <td><input name="number" type="text" class="text2"  value="<%=teacher.getNumberString()%>" ></td>
+                  </tr>
+                  <tr>
+                    <td height="40"><span style="color:red;">*</span>教师姓名：</td>
+                    <td><input name="name" type="text" class="text2"   value="<%=teacher.getNameString()%>"  ></td>
+                  </tr>
+                  <tr>
+                    <td height="40"><span style="color:red;">*</span>教师电话：</td>
+                    <td><input name="tel" type="text" class="text2"   value="<%=teacher.getTelString()%>"  ></td>
+                  </tr>
+                  <tr>
+                    <td height="40"><span style="color:red;">*</span>教师专业：</td>
+                    <td><input name="major" type="text" class="text2"   value="<%=teacher.getMajorString()%>"  ></td>
+                  </tr>
+                   <tr>
+                    <td height="40"><span style="color:red;">*</span>密码：</td>
+                    <td><input name="password" type="test" class="text2" value="<%=teacher.getPwdString()%>"></td>
+                  </tr>
+                </table>
+                <div>
+                  	<input height="40" type="submit" name="modify" id="modify" value="提交修改">
+				</div>
+		</form>
+		</div>
+		
+		
+		
+		
+		
+		
 	</div>
 </div>
 

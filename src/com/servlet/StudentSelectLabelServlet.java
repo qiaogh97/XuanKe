@@ -13,16 +13,14 @@ import javax.servlet.http.HttpSession;
 import com.dao.LabelDao;
 import com.entity.Label;
 
-
-public class TeacherPublishLabel2Servlet extends HttpServlet {
+public class StudentSelectLabelServlet extends HttpServlet{
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		doPost(req, resp);
-		
 	}
-
+	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
@@ -31,28 +29,27 @@ public class TeacherPublishLabel2Servlet extends HttpServlet {
 	        resp.setCharacterEncoding("utf-8");
 	        req.setCharacterEncoding("utf-8");
 	        
-	        HttpSession session = req.getSession();
-	        String teachernum = (String)session.getAttribute("number");
-	        
+	        String teachernum = null;
+	        if(req.getParameter("teachernum")!="")
+	        	teachernum=req.getParameter("teachernum");
+	        int labelnum = -1;
+	        if(req.getParameter("labelnum")!="")
+	        	labelnum=new Integer(req.getParameter("labelnum"));
 	        LabelDao labelDao = new LabelDao();
-	        ArrayList<Label> selectLabelList = labelDao.selectLabel(teachernum, -1);
+	        ArrayList<Label> selectLabelList = labelDao.selectLabel(teachernum, labelnum);
 	        
 			req.setAttribute("selectLabelList", selectLabelList);
 			
-			RequestDispatcher rd = req.getRequestDispatcher("tea1_publishlabel2.jsp");  
+			RequestDispatcher rd = req.getRequestDispatcher("stu1_readylabel.jsp");  
 			try {  
 			    rd.forward(req, resp);  
 			         return;  
 			}catch(Exception e){
 				e.printStackTrace();
-			} 
-	        
-	        
-	        			
+			}         			
 	        
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
-
 }
