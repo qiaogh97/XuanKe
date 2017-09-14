@@ -3,17 +3,11 @@ package com.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
-
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import com.dao.LabelDao;
-import com.dao.Stu_LabDao;
-import com.entity.Label;
 
 public class TeacherInputGrade2Servlet extends HttpServlet {
 	public void doGet(HttpServletRequest req, HttpServletResponse resp)

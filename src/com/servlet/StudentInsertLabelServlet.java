@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -14,6 +13,7 @@ import javax.servlet.http.HttpSession;
 import com.dao.LabelDao;
 import com.dao.Stu_LabDao;
 import com.entity.Label;
+import com.entity.Stu_lab;
 
 public class StudentInsertLabelServlet extends HttpServlet {
 	
@@ -40,15 +40,20 @@ public class StudentInsertLabelServlet extends HttpServlet {
 	        	out.print("<script>alert('课程编号不能为空！');window.location.href='stu2_mylabel.jsp'</script>");
 			}else {
 				int labelnum = Integer.parseInt(labelnumString);
+				LabelDao labelDao = new LabelDao();
+				ArrayList<Label> selectLabel = labelDao.selectLabel(null, labelnum);
+				if (selectLabel.size()==0) {
+					out.print("<script>alert('不存在该课题编号！');window.location.href='stu2_mylabel.jsp'</script>");
+				}
 				
 				Stu_LabDao stu_LabelDao = new Stu_LabDao();
 				int result = stu_LabelDao.insertStu_lab(studentnum, labelnum, 0);
 				
 				if(result==1){
-					out.print("<script>alert('提交成功！');window.location.href='stu2_mylabel.jsp'</script>");
+					out.print("<script>alert('申报成功！');window.location.href='stu2_mylabel.jsp'</script>");
 				}	
 				else{
-					out.print("<script>alert('提交失败！');window.location.href='stu2_mylabel.jsp'</script>");
+					out.print("<script>alert('您已申报过该课题！');window.location.href='stu2_mylabel.jsp'</script>");
 				}  
 				         			
 				

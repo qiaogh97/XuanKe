@@ -22,7 +22,6 @@ public class TeacherStudentManage3Servlet extends HttpServlet {
         PrintWriter out = resp.getWriter();
         
         
-        
         //type是类型，1代表录取，2代表拒绝
         String type = req.getParameter("type");
         //object1代表stu_lab.getLabelnum()

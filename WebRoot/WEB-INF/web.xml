@@ -55,6 +55,11 @@
     <servlet-name>StudentInsertLabelServlet</servlet-name>
     <servlet-class>com.servlet.StudentInsertLabelServlet</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>LoginServlet</servlet-name>
+    <servlet-class>com.servlet.LoginServlet</servlet-class>
+  </servlet>
+
 
 
 
@@ -114,6 +119,10 @@
   <servlet-mapping>
     <servlet-name>StudentSelectLabelServlet</servlet-name>
     <url-pattern>/StudentSelectLabelServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>LoginServlet</servlet-name>
+    <url-pattern>/LoginServlet</url-pattern>
   </servlet-mapping>
 
 </web-app>

@@ -36,7 +36,6 @@ public class TeacherStudentManageServlet extends HttpServlet {
 	        //取得登录状态下的老师的编号
 	        HttpSession session = req.getSession();
 	        String teachernum = (String)session.getAttribute("number");
-	        System.out.println("teachernum:"+teachernum);
 	        
 	        //查询该老师名下的所有课题
 	        LabelDao labelDao = new LabelDao();
